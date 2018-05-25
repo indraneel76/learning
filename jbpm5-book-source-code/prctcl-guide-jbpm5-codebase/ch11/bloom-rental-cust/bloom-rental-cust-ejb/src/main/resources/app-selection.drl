@@ -1,0 +1,36 @@
+import com.bb.cust.bloomrentaldomain.RentalApp;
+
+rule "Credit Score fact update"
+ruleflow-group "app-criteria"
+dialect "mvel"
+salience 100
+when
+	$a:RentalApp(factUpdated == false)
+then
+	System.out.println("Test rule firing...");
+	$a.setFactUpdated(true);
+	update($a);
+end
+
+rule "Credit Score above 600"
+ruleflow-group "app-criteria"
+dialect "mvel"
+salience 50
+when
+	$a:RentalApp(creditScore > 600)
+then
+	$a.setApprovedByRules(true);
+	System.out.println("Credit Score above 600 rule firing..." + $a.getCreditScore());
+end
+
+rule "Credit Score under 600"
+ruleflow-group "app-criteria"
+dialect "mvel"
+salience 40
+when
+	$a:RentalApp(creditScore < 600)
+then
+	$a.setApprovedByRules(false);
+	System.out.println("Credit Score under 600 rule
+	firing...:" + $a.getCreditScore());
+end

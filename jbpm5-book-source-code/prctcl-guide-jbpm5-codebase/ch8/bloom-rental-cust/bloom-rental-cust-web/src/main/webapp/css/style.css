@@ -1,0 +1,21 @@
+table,tr,td {
+	border: none
+}
+
+.hr50 {
+	width: 50%;
+}
+
+hr {
+	border-color: black;
+	margin-left: 0px;
+}
+
+body {
+	font-family: arial;
+}
+
+.readonlyinput {
+	border: none;
+	width: 30px;
+}
