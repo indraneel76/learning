@@ -28,3 +28,25 @@ def add (a,b):
 
 add("hello","world")
 add(1,2)
+add([1,2],[3,4])
+
+'''python name scope
+Local
+Enclosing
+Global
+Built-in
+'''
+'''demonstrating scoping'''
+count=0
+def show_count():
+    print("count = ",count)
+
+def set_count(c):
+    global count
+    count=c
+
+    show_count()
+    set_count(10)
+    show_count()
+
+print(dir(show_count))
