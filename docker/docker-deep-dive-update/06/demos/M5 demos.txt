@@ -1,0 +1,62 @@
+#M5-03 - Dockerizing a web app
+
+# Perform the following from your home directory, or another clean directory.
+
+# Clone the GitHub repo:  
+git clone https://github.com/nigelpoulton/psweb.git
+
+cd psweb
+
+vim Dockerfile
+
+#Contents of Dockerfile
+FROM alpine
+LABEL maintainer="use-your-own-email"
+RUN apk add --update nodejs nodejs-npm
+COPY . /src
+WORKDIR /src
+RUN  npm install
+EXPOSE 8080
+ENTRYPOINT ["node", "./app.js"]
+
+# Save the Dockerfile
+
+docker image build -t psweb .
+
+docker image ls
+
+docker container run -d --name web1 -p 8080:8080 psweb
+
+# A container will now be running on your Docker host and listening on port 8080 on the host.
+# You can connect to the web app by entering the IP/URL/localhost of your Docker host and appending :8080
+
+
+#M5-04 - Digging Deeper
+
+# Host was cleaned up with the following commands prior to starting this demo
+# The commands work on Linux and Windows PowerShell (they do not work in Windows CMD.exe)
+docker container stop $(docker container ls -aq)
+docker image rm $(docker image ls -q)
+
+# Check that there are no images or containers on your Docker host. This is not necessary, but makes it easier to identify images and containers that are part of the demo.
+docker image ls
+docker container ls
+
+# Build the image using the Git repo as the build context.
+docker image build -t psweb https://github.com/nigelpoulton/psweb.git
+
+docker image history psweb
+
+docker image inspect psweb
+
+
+#M5-05
+# Clone the following Git repo
+git clone https://github.com/nigelpoulton/atsea-sample-shop-app.git
+
+cd atsea-sample-shop-app/app
+
+docker image build -t multistage .
+
+docker image ls
+

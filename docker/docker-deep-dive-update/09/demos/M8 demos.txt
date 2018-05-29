@@ -1,0 +1,106 @@
+########################
+# The examples shown here require a 3-node Swarm
+# Running Docker 17.06 and higher. 
+# The examples here are for Linux3 but will work on Windows if you substitute the containers for appropriate Windows container
+########################
+
+# List the nodes in the Swarm
+	docker node ls
+
+# List the existing networks
+	docker network ls
+	
+#Inspect the bridge network (this will be "nat" on Windows
+	docker network inspect bridge
+	
+# Run a new background container (substitute the example below for a PowerShell container if using Windows	
+	docker container run --rm -d alpine sleep 1d
+
+# Inspect the bridge network again ("nat" on Windows). The new container will be listed as on that network.
+	docker network inspect bridge
+
+# Start a new web container and map a port tot he host (this will make the container accessible from outside of the host/bridge network
+# Substitute the NGINX web server container for IIS if using Windows
+	docker container run --rm -d --name web -p 8080:80 nginx
+
+# Verify the port mapping	
+	docker port web
+	
+
+######Access the web server container from a browser. You will need to use the IP address of your Docker host and access it on  port 8080
+
+# Create a new user-defined bridge network and then list networks to see it
+	docker network create -d bridge golden-gate
+	docker network ls
+
+# Run a new container on the user-defined bridge network (called "golden-gate" in the example)
+	docker container run --rm -d --network golden-gate alpine sleep 1d	
+
+# Create a new OVERLAY network called "overnet" and list the networks to see it
+	docker network create -d overlay overnet
+	docker network ls
+	
+# Create a new service called "pinger" and put it on the overnet overlay network
+	docker service create -d --name pinger --replicas 2 --network overnet alpine sleep 1d
+
+# List the running services to make sure it has deployed correctly
+	docker service ls
+	
+# Find out which nodes the 2 replicas are running on	
+	docker service ps pinger
+
+#### Make sure you are logged on to a node running one of the replica tasks
+
+# Inspect the "overnet" network on the node and make a note of its IP address
+	docker network inspect overnet
+	COPY the replicas IP
+	
+#### Switch to the node running the other service replica
+
+# List container on this node
+	docker container ls
+	
+# Exec onto the service replica running on this node. You will need to substitute <ID> with the ID of the service replica in your environment
+	docker container exec -it <ID> sh
+
+# Ping the IP of the service replica on the other node
+	ping <ip-of-replica-on-other-node>
+
+
+####### NETWORK SERVICES DEMOS
+
+# Clean-up all existing container and services. DO NOT DO THIS IN A PRODUCTION HOST as it will destroy all containers and services. Only do this step if you are using a lab host that is only running containers and services from this set of demos. 
+	docker service rm $(docker service ls -q)
+	docker container rm $(docker container ls -aq)
+
+#Create two new background services: one called ping and one called pong. If you are following along with Windows you should make this a PowerShell container instead of Alpine	
+	docker service create -d --name ping --network overnet --replicas 3 alpine sleep 1d
+	docker service create -d --name pong --network overnet --replicas 3 alpine sleep 1d
+
+# List the services to make sure they created correctly
+	docker service ls
+
+# Get the ID of the ping service replica running on the node you are logged on to (all nodes in the swarm will have a replica for the ping service. 
+# This is because there are three nodes in the Swarm and 3 replicas in the service
+	docker container ls
+	
+# Exec on to the ping service replica. You will need to substitute <ID> with the ID of the service replia in your lab	
+	docker container exec -it <ID> sh
+
+# Ping the "pong" service by name
+	ping pong
+
+#Exit the service replica
+	exit
+
+# Deploy a new web server service called "web". This example uses an NGINX web server that listens on port 80. 
+# If you are following along on Windows you might want to use an IIS container
+	docker service create -d --name web --network overnet --replicas 1 -p 8080:80 nginx
+
+# Inspect the web service and verify the network-related metadata towards the bottom of the output
+	docker service inspect web --pretty
+			
+You can now access the web service by pointing a web browser to any node in the Swarm on port 8080
+	
+	
+## END OF DEMOS

@@ -1,0 +1,53 @@
+########################
+# To complete this demo you will need a single-node Swarm
+# If you are using Linux you will need Docker 1.13 or later
+# If you are using Windows you will need Docker 17.06 or later
+########################
+
+
+# Create a plain text file to use as the content of the Docker secret
+	echo "Pluralsight rocks" > secret.txt
+
+# Create a new Docker secret using the text file created in the previous step
+	docker secret create wp-sec-v1 ./secret.txt
+
+# Verify that the secret created correctly
+	docker secret ls
+
+# Inspect the secret. Notice that you cannot see the unencrypted contents of the secret
+	docker secret inspect wp-sec-v1
+
+# Create a new Service and grant it access to the secret.
+# If you are using Windows containers you should substitute the Alpine container for a PowerShell container running `Start-Sleep -s 86400`
+	docker service create -d --name sec
+	ret-service --secret wp-sec-v1 alpine sleep 1d
+
+# Verify that the service is running
+	docker service ls
+
+# Inspect the service and view the config data relating to the secret
+	docker service inspect secret-service
+
+# List all containers on the node so that you have the ID of the service repica for the next step
+	docker container ls
+
+# Start a new exec session to the service replica (the example below is for Linux. You will need to adjust this for Windows
+	docker container exec -it <ID> sh
+
+# List the contents of the secres directory. If you are using Windows you will need to list the contents of C:\ProgramData\Docker\Secrets
+	ls -l /run/secrets/
+
+# Display the contents of the unencrypted secret
+	cat /run/secrets/wp-sec-v1
+
+# Gracefully exit the service replica
+	Ctrl+P+Q
+
+# Attempt to delete the secret with the service replica still running. The command will fail.
+	docker secret rm wp-sec-v1
+
+# Stop and delete the service
+	docker service rm secret-service
+
+# Retry the operation to delete the secret. It will succeed now that the service is deleted
+	docker secret rm wp-sec-v1

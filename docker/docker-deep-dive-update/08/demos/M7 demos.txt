@@ -1,0 +1,87 @@
+###############
+# To complete this demo you will need 6 nodes running Docker 1.13 or later. The three managers need to be Linux.
+#	This example usess 5 x Linux nodes and 1 x Windows node. The three managers must be Linux.
+###############
+
+## NODE1 (Linux)
+	# Verify that Swarm is showing as `inactive`
+	docker system info
+	
+	# Initialize a new Swarm
+	docker swarm init
+
+	# Verify that Swarm is showing as `active`
+	docker system info
+
+	# List nodes in the Swarm (should be 1)
+	docker node ls
+		
+	# Extract the *manager* join token
+	docker swarm join-token manager
+		COPY the command and token to the clipboard
+	
+	
+## Switch to NODE2 (Linux)
+	# PASTE the command copied in the previous step
+	
+	# Verify that the node joined the Swarm as a manager
+	docker node ls
+	
+	
+## Switch to NODE3 (Linux)
+	# PASTE the same command used in the previous step	
+
+	# Verify that the node joined the Swarm as a manager and that there are now three nodes (managers) in the Swarm
+	docker node ls
+
+	# Extract the *worker* join token
+	docker swarm join-token worker
+		COPY the command and token to the clipboard
+	
+
+## Switch to NODE4 (Can be Linux or Windows)
+	# PASTE the command copied in the previous step
+	
+	# Try and verify that the node joined the Swarm as a worker
+	docker node ls    << The command will fail if executed on a worker node.
+
+
+## Switch to NODE1 (or any other manager node)
+	# Verify that the cluster now has three managers and one worker
+	docker node ls
+	
+	# Rotate the *worker* join token
+	docker swarm join-token --rotate worker
+	
+
+## Switch to NODE5 (Can be Linux or Windows)
+	# PASTE in old join command with the old join token
+	# The command will fail. This is because the old join token is no longer valid
+
+
+## Switch to NODE1 (or any other manager node)
+	# View the nodes client certificate. The location of the client certificate may be different depending on your Linux distro
+	openssl x509 -in /var/lib/docker/swarm/certificates/swarm-node.crt -text
+
+	# Update the Swarm's certificate rotation policy to force a rotation every two days (48 hours)
+	docker swarm update--cert-expiry 48h
+	
+	# Verify that the operation succeeded
+	docker system info
+
+	# Enable the Swarm's autolock policy
+	docker swarm update --autolock=true
+		COPY the unlock key
+	
+	# Restart the Docker daemon on your node (any manager node)
+	service docker restart
+	
+	# Attempt to list the nodes in the cluster. The command will fail.
+	docker node ls
+
+	# Unlock the Swarm so that the node can re-join
+	docker swarm unlock
+	PASTE in the unlock key
+	
+	# List the nodes in the swarm again. This time the command will work
+	docker node ls

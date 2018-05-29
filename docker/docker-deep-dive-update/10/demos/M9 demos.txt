@@ -1,0 +1,101 @@
+## MODULE 9: Working volumes and persistent data
+
+## Clip 3: Working with the docker volume command
+
+# List the docker volume sub-commands
+	docker volume
+
+# List existing volumes on your Docker hsot
+	docker volume ls
+
+# Create a new volume called "myvol" using the default "local" driver
+	docker volume create myvol
+
+# List and inspect the new volume
+	docker volume ls
+	docker volume inspect myvol
+
+# Create another newvolume and list it	
+	docker volume create psvol
+	docker volume ls
+
+# Look at where the volume is stored on the local Docker host
+	ls -l /var/lib/docker/volumes
+
+# Remove the newly created volumes and make sure they are gone
+	docker volume rm myvol psvol
+	docker volume ls
+
+
+## Clip 4: Integrating volumes with containers
+
+# Show that there are no volumes currently on your Docker host
+	docker volume ls
+
+# Create a new container and create a new volume as part of the operation
+	docker container run -dit --name voltest --mount source=ubervol,target=/vol alpine:latest
+
+# Verify the newly created volume exists
+	docker volume ls
+
+# Inspect the contents of the volume in the Docker host's local filesystem
+	ls -l /var/lib/docker/volumes/ubervol/_data
+
+# Exec onto the container created in the earlier step
+	docker container exec -it voltest sh
+
+# Inspect the contents of the volume within the container
+	ls -l /vol
+
+# Write some data to a new file in the volume
+	echo "some data" > /vol/newfile
+
+# Make sure the new file and data exist in the volume
+	cat /vol/newfile
+
+# Exit the container
+	exit
+
+# Inspect the contents of the volume in the Docker host's filesystem. There will be a file called "newfile" containing the string "some data"
+	ls -l /var/lib/docker/volumes/ubervol/_data
+	cat /var/lib/docker/volumes/ubervol/_data/newfile
+
+# Stop and delete the "voltest" container
+	docker container rm voltest -f
+
+# Make sure the ubervol volume still exists even though the container using it is deleted
+	docker volume ls
+
+# Start a brand new container and attach the "ubervol" volume
+	docker container run -dit --name volmore --mount source=ubervol,target=/app nginx
+
+# Exec in to the new container
+	docker container exec -it volmore sh
+
+# Verify that the data exists in the volume (which is mounted to /app in the new container)
+	ls -l /app
+	cat /app/newfile
+
+# Add more data to the file in the volume
+	echo "more data" >> /app/newfile
+
+# Exit the container
+	exit
+
+# Verify the new data is visible from the volume on the host
+	cat /var/lib/docker/volumes/ubervol/_data/newfile
+
+# Attempt to delete the volume while it's in use by a container (the operation will fail)
+	docker volume rm ubervol
+
+# Delete the container using the ubervol
+	docker container rm volmore -f
+
+# Retry the volume delete operation
+	docker volume rm ubervol
+	
+# Verify the volume data has been removed from the Docker hosts filesystem
+	ls -l /var/lib/docker/volumes
+	
+
+

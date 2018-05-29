@@ -1,0 +1,112 @@
+##################################
+# The following demos are from M6-03 - Working with Containers: Diving Deeper
+##################################
+
+#### Perform the following from a Linux-based Docker host
+
+#### Show that there are no running containers, then start a new container
+	docker container ls
+	docker container run -it alpine sh
+
+#### List the processes running inside the container
+	ps -elf
+	Press `Ctrl-P-Q` to gracefully exit the container
+
+### Show that the container is still running
+	docker container ls
+
+### Start another container (We will call this on the SLEEP container. Start this in the background (-d) and tell it to run the sleep process for one day
+	docker container run --name SLEEP -d alpine sleep 1d
+
+### Show that two containers are now running
+	docker container ls
+
+### Stop the SLEEP container and show that only one container is now running
+	docker container stop SLEEP
+	docker container ls
+
+### Show containers in the `Exited` state.
+	docker container ls -a
+
+### Restart the SLEEP container
+	docker container start SLEEP
+	docker container ls
+
+### Start anew interactive shell session to the SLEEP container
+	docker container exec -it SLEEP sh
+
+### List the processes running in the SLEEP container. You should see three (the original `sleep`, the new `sh` and the `ps` process)
+	ps -elf
+
+### Create anew file with some text
+	echo "devops FTW" > newfile
+	ls
+
+### Exit the container. This will exit the `sh` process started by the `docker container exec` command but will not kill the `sleep` process. This will keep the container running.
+	exit
+
+### Stop and then restart the SLEEP container
+	docker container stop <ID or name of SLEEP container>
+	docker container start <ID or name of SLEEP container>
+
+### Use the `docker container exec` command to run some commands in the SLEEP container	
+	docker container exec <ID or name of SLEEP container> ls -1
+	docker container exec <ID or name of SLEEP container> cat newfile
+
+#### Clean-up all running containers
+	docker container rm $(docker container ls -aq) -f
+
+### Start anew container
+	docker container run -it alpine sh
+
+### Tterminate the container by killing its main process (PID1) with the `exit` command
+	exit
+
+### Show that the container is no longer running	
+	docker container ls
+
+### Start another new container
+	docker container run -it alpine sh
+
+### Gracefully exit the container, leaving it's main process (PID1) running	
+	Ctrl+p+q
+
+### Show that the container is still running
+	docker container ls
+
+### Start a new container without specifying a main process for it to run
+	docker container run -ts alpine
+
+### Gracefully exit the container
+	Ctrl=P+Q
+
+### Inspect the iamge that the container was started from and locate its entrypoint process (CMD or ENTRYPOINT instruction)
+	docker image inspect alpine
+
+
+##################################
+# Windows container examples from M6-03
+##################################	
+	
+
+### Start a new background container running the default IIS web server and map port 80 on the host to 80 in the container
+	docker container run -d --name web1 -p 80:80 microsoft/iis 
+
+### Check the port mapping	
+	docker port web1
+	
+### Get the containers IP	
+	docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" web1
+
+### View the web page in a browser
+
+
+
+##################################
+# Cleanup commands. Work on Linux and in Windows PowerShell terminal
+##################################
+
+### Cleanup running containers and images
+	docker container rm $(docker container ls -aq) -f
+	docker image rm $(docker image ls -q)
+	
