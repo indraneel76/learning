@@ -1,0 +1,57 @@
+package com.inda.cmusphinxtest;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+import edu.cmu.sphinx.api.Configuration;
+import edu.cmu.sphinx.api.LiveSpeechRecognizer;
+import edu.cmu.sphinx.api.SpeechResult;
+import edu.cmu.sphinx.api.StreamSpeechRecognizer;
+import edu.cmu.sphinx.result.WordResult;
+
+public class TranscriberDemo {       
+
+    public static void main(String[] args) throws Exception {
+
+        Configuration configuration = new Configuration();
+
+        configuration.setAcousticModelPath("file:///home/indraneel/learn/cmu_sphinx/javawksp/cmusphinxtest/src/resources/edu/cmu/sphinx/models/en-us/en-us");
+        configuration.setDictionaryPath("file:///home/indraneel/learn/cmu_sphinx/javawksp/cmusphinxtest/src/resources/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
+        configuration.setLanguageModelPath("file:///home/indraneel/learn/cmu_sphinx/javawksp/cmusphinxtest/src/resources/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
+
+	StreamSpeechRecognizer recognizer = new StreamSpeechRecognizer(configuration);
+	InputStream stream = new FileInputStream(new File("/home/indraneel/learn/cmu_sphinx/javawksp/cmusphinxtest/target/classes/com/inda/cmusphinxtest/test.wav"));
+
+        recognizer.startRecognition(stream);
+	SpeechResult result;
+        while ((result = recognizer.getResult()) != null) {
+	    System.out.format("Hypothesis: %s\n", result.getHypothesis());
+	    for (WordResult r : result.getWords()) {
+	        System.out.println(r);
+	    }
+
+	    // Save lattice in a graphviz format.
+	    result.getLattice().dumpDot("lattice.dot", "lattice");
+	    
+	}
+	recognizer.stopRecognition();
+	
+	//live 
+	LiveSpeechRecognizer recognizer1 = new LiveSpeechRecognizer(configuration);
+	// Start recognition process pruning previously cached data.
+	recognizer1.startRecognition(true);
+	//SpeechResult result1 = recognizer.getResult();
+	
+	 while ((result = recognizer.getResult()) != null) {
+		    System.out.format("Hypothesis: %s\n", result.getHypothesis());
+		    for (WordResult r : result.getWords()) {
+		        System.out.println(r);
+		    }
+	
+	// Pause recognition process. It can be resumed then with startRecognition(false).
+	recognizer1.stopRecognition();
+	
+	
+    }
+}
