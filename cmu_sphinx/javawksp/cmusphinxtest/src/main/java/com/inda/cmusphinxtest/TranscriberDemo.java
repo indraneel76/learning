@@ -24,8 +24,8 @@ public class TranscriberDemo {
      //  configuration.setAcousticModelPath("file:///home/indraneel/learn/cmu_sphinx/cmusphinx-en-in-5.2/en_in.cd_cont_5000");
         
         configuration.setAcousticModelPath("file:///home/indraneel/learn/cmu_sphinx/temp/en-us-adapt");
-        configuration.setDictionaryPath("file:///home/indraneel/learn/cmu_sphinx/cmusphinx-en-in-5.2/en_in.dic");
-        configuration.setLanguageModelPath("file:///home/indraneel/learn/cmu_sphinx/cmusphinx-en-in-5.2/en-us.lm.bin");
+        configuration.setDictionaryPath("file:///home/indraneel/learn/cmu_sphinx/sphinx4-5prealpha-src/sphinx4-data/src/main/resources/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
+        configuration.setLanguageModelPath("file:///home/indraneel/learn/cmu_sphinx/sphinx4-5prealpha-src/sphinx4-data/src/main/resources/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
 	 
 	//live 

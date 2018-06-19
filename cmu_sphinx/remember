@@ -1,0 +1,98 @@
+https://cmusphinx.github.io/wiki/tutorialam/
+
+ 1125  sudo make install
+ 1126  cd ..
+ 1127  cd sphinxtrain-5prealpha/
+ 1128  ./autogen.sh 
+ 1129  make 
+ 1130  sudo make install
+ 1131  sphinxtrain
+ 1132  exit
+ 1133  cd learn/
+ 1134  ls
+ 1135  cd cmu_sphinx/
+ 1136  ls
+ 1137  cd
+ 1138  cd eclipse/
+ 1139  ./ eclipse &
+ 1140  exit
+ 1141  cd /usr/local
+ 1142  cd libexec/
+ 1143  ls
+ 1144  cd sphinxtrain/
+ 1145  ls
+ 1146  cp bw ~/learn/cmu_sphinx/temp/
+ 1147  cp map_adapt ~/learn/cmu_sphinx/temp/
+ 1148  cp mk_s2sendump ~/learn/cmu_sphinx/temp/
+ 1149  sphinx_fe
+ 1150  cd
+ 1151  cd learn/
+ 1152  cd cmu_sphinx/
+ 1153  cd temp
+ 1154  ls
+ 1155  cp ~/learn/cmu_sphinx/pocketsphinx-5prealpha/model/en-us/en-us .
+ 1156  cp -a  ~/learn/cmu_sphinx/pocketsphinx-5prealpha/model/en-us/en-us .
+ 1157  cp -a  ~/learn/cmu_sphinx/pocketsphinx-5prealpha/model/en-us/cmudict-en-us.dict .
+ 1158  cp -a  ~/learn/cmu_sphinx/pocketsphinx-5prealpha/model/en-us/en-us.lm.bin .
+ 1159  ls
+ 1160  cd en-us/
+ 1161  ls
+ 1162  cd ..
+ 1163  sphinx_fe -argfile en-us/feat.params         -samprate 16000 -c arctic20.fileids        -di . -do . -ei wav -eo mfc -mswav yes
+ 1164  ls
+ 1165  bw
+ 1166  ./bw  -hmmdir en-us  -moddeffn en-us/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn cmudict-en-us.dict  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1167  cd en-us/
+ 1168  ls
+ 1169  cd ..
+ 1170  pocketsphinx_mdef_convert -text en-us/mdef en-us/mdef.txt
+ 1171  sudo apt install pocketsphinx
+ 1172  pocketsphinx_mdef_convert -text en-us/mdef en-us/mdef.txt
+ 1173  cd en-us/
+ 1174  ls
+ 1175  cd ..
+ 1176  ./bw  -hmmdir en-us  -moddeffn en-us/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn cmudict-en-us.dict  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1177  ./mllr_solve     -meanfn en-us/means     -varfn en-us/variances     -outmllrfn mllr_matrix -accumdir .
+ 1178  mllr_solve
+ 1179  sudo apt-get install mllr_solve
+ 1180  cd ..
+ 1181  ls
+ 1182  locate mllr_solve
+ 1183  ls -lrt
+ 1184  cd temp/
+ 1185  ls
+ 1186  locate mllr_solve
+ 1187  cp /usr/local/libexec/sphinxtrain/mllr_solve .
+ 1188  ls -lrt
+ 1189  ./mllr_solve     -meanfn en-us/means     -varfn en-us/variances     -outmllrfn mllr_matrix -accumdir .
+ 1190  ls
+ 1191  ./map_adapt     -moddeffn en-us/mdef.txt     -ts2cbfn .ptm.     -meanfn en-us/means     -varfn en-us/variances     -mixwfn en-us/mixture_weights     -tmatfn en-us/transition_matrices     -accumdir .     -mapmeanfn en-us-adapt/means     -mapvarfn en-us-adapt/variances     -mapmixwfn en-us-adapt/mixture_weights     -maptmatfn en-us-adapt/transition_matrices
+ 1192  cd en-us/
+ 1193  ls
+ 1194  cd ..
+ 1195  cp -a en-us en-us-adapt
+ 1196  ./map_adapt     -moddeffn en-us/mdef.txt     -ts2cbfn .ptm.     -meanfn en-us/means     -varfn en-us/variances     -mixwfn en-us/mixture_weights     -tmatfn en-us/transition_matrices     -accumdir .     -mapmeanfn en-us-adapt/means     -mapvarfn en-us-adapt/variances     -mapmixwfn en-us-adapt/mixture_weights     -maptmatfn en-us-adapt/transition_matrices
+ 1197  cd en-us-adapt/
+ 1198  ls
+ 1199  pwd
+ 1200  sphinxtrain
+ 1201  cd eclipse/
+ 1202  ./eclipse 
+ 1203  cd
+ 1204  ./eclipse &
+ 1205  top
+ 1206  cd 
+ 1207  cd learn/
+ 1208  cd cmu_sphinx/
+ 1209  ls
+ 1210  cd temp
+ 1211  sphinx_fe -argfile en-in/en_in.cd_cont_5000/feat.params         -samprate 16000 -c arctic20.fileids        -di . -do . -ei wav -eo mfc -mswav yes
+ 1212  ./bw  -hmmdir en-us  -moddeffn en-in/en_in.cd_cont_5000/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn en_in.dict  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1213  ./bw  -hmmdir en-us  -moddeffn en-in/en_in.cd_cont_5000/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn en_in.dic  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1214  ./bw
+ 1215  ./bw  -hmmdir en-in  -moddeffn en-in/en_in.cd_cont_5000/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn en_in.dic  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1216  ./bw  -hmmdir en-in/en_in.cd_cont_5000  -moddeffn en-in/en_in.cd_cont_5000/mdef.txt  -ts2cbfn .ptm.  -feat 1s_c_d_dd  -svspec 0-12/13-25/26-38  -cmn current  -agc none  -dictfn en_in.dic  -ctlfn arctic20.fileids  -lsnfn arctic20.transcription  -accumdir .
+ 1217  history
+
+
+
