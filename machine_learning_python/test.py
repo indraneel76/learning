@@ -1,1 +1,1 @@
-import sc
+import ski
