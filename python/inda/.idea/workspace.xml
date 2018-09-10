@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2f611e9-f931-479b-b67f-477a599fd087" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classifier_run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data_science/04/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../data_science/04/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data_science/05/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../data_science/05/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data_science/06/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../data_science/06/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data_science/08/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../data_science/08/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data_science/09/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../data_science/09/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensorflow_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.tflearn.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/model.tflearn.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.tflearn.index" beforeDir="false" afterPath="$PROJECT_DIR$/model.tflearn.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.tflearn.meta" beforeDir="false" afterPath="$PROJECT_DIR$/model.tflearn.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data" beforeDir="false" afterPath="$PROJECT_DIR$/training_data" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,30 +29,33 @@
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="py" value="4" />
+          <entry key="json" value="1" />
+          <entry key="py" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="4" />
+          <entry key="Python" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1849" />
+          <entry key="py" value="1851" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1849" />
+          <entry key="Python" value="1851" />
         </counts>
       </usages-collector>
     </session>
@@ -89,11 +95,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="172" selection-start-line="172" selection-end-line="172" />
+            <state relative-caret-position="258">
+              <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
               <folding>
                 <element signature="e#33#46#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/intents.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -117,10 +132,11 @@
         <option value="$PROJECT_DIR$/kmeanclustering.py" />
         <option value="$PROJECT_DIR$/tensorflow_example.py" />
         <option value="$PROJECT_DIR$/classifier.py" />
+        <option value="$PROJECT_DIR$/classifier_run.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-2" />
     <option name="y" value="-17" />
     <option name="width" value="1386" />
@@ -181,7 +197,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536429544381" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536545341779" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -201,7 +217,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.classifier">
-    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python">
       <module name="inda" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -286,14 +302,13 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.classifier" />
       <item itemvalue="Python.testfile" />
       <item itemvalue="Python.kmeanclustering" />
       <item itemvalue="Python.tensorflow_example" />
-      <item itemvalue="Python.classifier" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.classifier" />
         <item itemvalue="Python.tensorflow_example" />
         <item itemvalue="Python.kmeanclustering" />
         <item itemvalue="Python.testfile" />
@@ -314,9 +329,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49886104" visible="true" weight="0.5869894" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886104" visible="true" weight="0.27382752" />
       <window_info id="Structure" order="1" sideWeight="0.5011389" side_tool="true" weight="0.25339368" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -326,7 +342,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3535188" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3535188" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -379,10 +395,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/intents.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier_run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
+        <state relative-caret-position="258">
+          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
           <folding>
             <element signature="e#33#46#0" expanded="true" />
           </folding>
