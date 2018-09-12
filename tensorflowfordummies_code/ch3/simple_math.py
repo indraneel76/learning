@@ -11,7 +11,6 @@ const_a = tf.constant(3.6)
 const_b = tf.constant(1.2)
 total = const_a + const_b
 quot = tf.div(const_a, const_b)
-
 # Math with random tensors
 rand_a = tf.random_normal([3], 2.0)
 rand_b = tf.random_uniform([3], 1.0, 4.0)
@@ -32,7 +31,11 @@ mat_prod = tf.matmul(mat_a, mat_b)
 with tf.Session() as sess:
     print('Sum: %f' % sess.run(total))
     print('Quotient: %f' % sess.run(quot))
+    print('rand_a: ', sess.run(rand_a))
+    print('rand_b: ', sess.run(rand_b))
     print('Difference: ', sess.run(diff))
+    print('vec_a: ', sess.run(vec_a))
+    print('vec_b: ', sess.run(vec_b))
     print('Element-wise product: ', sess.run(prod))
     print('Dot product: ', sess.run(dot))
     print('Matrix product: ', sess.run(mat_prod))

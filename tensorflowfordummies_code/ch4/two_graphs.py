@@ -34,7 +34,8 @@ with tf.Session() as sess:
     # Execute the session
     dot_result, summary = sess.run([t5, merged_op])
 
-    # Write the result to the log
+
+   # Write the result to the log
     tf.logging.info('Result of dot product: %f', dot_result)
 
     # Print the summary data
