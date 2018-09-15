@@ -1,0 +1,8 @@
+To install Anaconda , download from https://www.continuum.io/downloads
+and follow the wizard. 
+
+Launch the iPython Notebook which will be under the name iPython Notebook/Jupyter Notebook 
+
+If NLTK is not installed by default, you can install the module by using 
+
+pip install nltk 
