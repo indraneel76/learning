@@ -1,6 +1,0 @@
-You should
-see this
-text.
-END
-But not
-this text.

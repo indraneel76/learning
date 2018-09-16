@@ -1,4 +1,0 @@
-@Bean
-public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
-	return new PropertySourcesPlaceholderConfigurer();
-}

@@ -1,2 +1,0 @@
-this is written from a jupter 
-notebook
