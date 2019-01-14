@@ -1,0 +1,25 @@
+About the Example Code
+
+Each code listing in the book appears in its own file. Other examples
+are grouped by chapter. The examples don't include code presented in
+interactive mode.
+
+To run example code, follow these steps:
+
+1. Copy and paste the code you want to run into a new text file. Give
+the file a name ending in .py - this turns it into a Python script file.
+
+2. Do one of the following:
+
+(a) Open the script in IDLE.
+
+(b) Open your terminal window, change to the directory that your script
+is in, type "python" at the prompt, and follow it with the name of your
+script, like so:
+
+% python file_name.py
+
+If you want Python to go into interactive mode after you run the script,
+use the -i flag when you start Python, like this:
+
+% python -i file_name.py

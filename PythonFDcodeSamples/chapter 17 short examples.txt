@@ -1,0 +1,73 @@
+#Chapter 17
+#Using Python's Primary Services
+#=====
+#SHORT EXAMPLES
+#=====
+
+#This example code tries to run a command using call() 
+#and prints information about the success or failure 
+#of the attempt.
+#To use this try block in your own code, just fill in 
+#your command and argument in place of "mycmd" + " myarg".
+#subprocess must be imported.
+try:
+    retcode = subprocess.call("mycmd" + " myarg", shell=True)
+    if retcode < 0:
+        print >>sys.stderr, "Child was terminated by signal", -retcode
+    else:
+        print >>sys.stderr, "Child returned", retcode
+except OSError, e:
+    print >>sys.stderr, "Execution failed:", e 
+    
+#
+#
+
+#sleep() method of time module example
+import time
+for x in range(3):
+    print "The time is now", time.asctime()
+    print "Now sleeping for 2 seconds..."
+    time.sleep(2)
+
+#
+#
+
+#factorical.py module (doctest demonstration)
+def factorial(x):
+    """
+    Calculate x!
+
+    >>> factorial(2)
+    2
+    """
+    if x < 0:
+        raise ValueError("x must be positive")
+    if x in (0, 1):
+        return 1
+    return x * factorial(x-1)
+
+#
+#
+
+#doctest code for factorial.py module (python 2.3 and later)
+def _test():
+    import doctest
+    doctest.testmod()
+
+if __name__ == "__main__":
+    _test()
+
+
+#
+#
+
+#doctest code for factorial.py module (python 2.2 and earlier)
+def _test():
+    import doctest, factorial
+    doctest.testmod(factorial)
+
+if __name__ == "__main__":
+    _test()
+
+#
+#

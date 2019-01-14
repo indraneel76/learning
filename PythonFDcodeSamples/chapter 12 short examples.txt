@@ -1,0 +1,19 @@
+#Chapter 12
+#Building Applications with Modules and Packages
+#=====
+#SHORT EXAMPLES
+#=====
+
+#test code example
+def f(x):
+    y = x**x
+    return y
+
+if __name__ == "__main__":
+    print "testing..."
+    print "passing the value 2"
+    z = f(2)
+    print "the function returns", z
+
+#
+#

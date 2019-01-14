@@ -1,0 +1,33 @@
+#Chapter 10
+#Staying in Control
+#=====
+#SHORT EXAMPLES
+#=====
+
+#for loop example
+for mychar in "hello!":
+    print "the ascii value of", mychar, "is", ord(mychar)
+    
+#
+#
+
+#for loop with else clause example
+mystring = "larch"
+vowels = set('aeiou')
+for a in mystring:
+    if a in vowels:
+        print mystring, "has a vowel"
+        break
+else:
+    print mystring, "does not have a vowel"
+
+#
+#
+
+#reversed() function example
+for f in reversed(range(1, 11)):
+    print f,
+print "blastoff!"
+
+#
+#

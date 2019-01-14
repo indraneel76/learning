@@ -1,0 +1,92 @@
+#Chapter 11
+#Fun with Functions
+#=====
+#SHORT EXAMPLES
+#=====
+
+#docstring example
+def printme(me, bad_word_list=None):
+    """
+    Print argument. Optionally check against list of words not to print.
+
+    Keyword argument:
+    bad_word_list -- list of words not to print (default None)
+    """
+    if bad_word_list and me in bad_word_list:
+        print "How dare you!"
+    else:
+        print me
+
+#
+#
+
+#list-copy function using range()
+def f(mylist, data):
+    newlist = mylist[:]            # make a copy of mylist
+    for i in range(len(mylist)):
+        newlist[i] = mylist[i] + data
+    return newlist
+
+#
+#
+
+
+#list-copy function using None
+def f(a, mylist=None):
+    if mylist is None:
+        mylist = []
+    mylist.append(a)
+    return mylist
+    
+#
+#
+
+#*args and **kwargs example
+def a_function(a, b, *args, **kwargs):
+    print "a is", a
+    print "b is", b
+    print "*args is this tuple:", args
+    print "**kwargs is this dictionary:", kwargs
+
+#
+#
+
+# groucho.py (global and local name assignments example)
+a_book = "man's best friend"
+print "outside of a dog, a book is", a_book
+
+def a_dog():
+    a_book = "too dark to read"
+    print "inside of a dog, it's", a_book
+
+a_dog()
+print "we're back outside of the dog again"
+print "and a book is again", a_book
+
+#
+#
+
+# brightdog.py  (global and local name assignments example)
+a_book = "man's best friend"
+print "outside of a dog, a book is", a_book
+def a_bright_dog():
+    print "inside of THIS dog, a book is still", a_book
+a_bright_dog()
+
+# 
+#
+
+# colors.py (global and local name assignments example)
+eggcolor = "green"
+meat = "ham"
+print eggcolor, "eggs and", meat
+def breakfast():
+    global eggcolor
+    eggcolor = "red"
+    meat = "bacon"
+    print eggcolor, "eggs and", meat
+breakfast()
+print eggcolor, "eggs and", meat
+
+#
+#

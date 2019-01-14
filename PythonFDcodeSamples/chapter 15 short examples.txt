@@ -1,0 +1,39 @@
+#Chapter 15
+#Feeling Exceptional
+#=====
+#SHORT EXAMPLES
+#=====
+
+#try/except block that checks for correct user input
+try:
+    x = raw_input("Enter an integer: ")
+    y = int(x)
+    print "Your number was", y
+except (TypeError, ValueError):
+    print "That didn't look like an integer to me."
+
+#
+#
+
+#try/except block with string argument
+try:
+    x = int(x)
+except TypeError:
+    raise TypeError("%r is not a valid integer" % x)
+
+#
+#
+
+#function that tries to read a file and return its contents
+def safe_read(filename):
+    f = open(filename)
+    try:
+        data = f.read()
+    except IOError:
+        data = None
+    finally:
+        f.close()
+    return data
+
+#
+#

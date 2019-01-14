@@ -1,0 +1,56 @@
+#Chapter 20
+#Accessing the Internet
+#=====
+#SHORT EXAMPLES
+#=====
+
+#setting up a read and output process on a Web page
+import htmllib, formatter
+from cStringIO import StringIO
+
+myfile = open("memo.html", 'rb')
+html = myfile.read()
+dumdum = formatter.DumbWriter(StringIO())
+fermat = formatter.AbstractFormatter(dumdum)
+parsley = htmllib.HTMLParser(fermat)
+parsley.feed(html)
+parsley.close()
+myfile.close()
+
+#
+#
+
+#An XML order form
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<order>
+    <recipient>
+        <name>Eric Half-a-Bee</name>
+        <street>123 Main St</street>
+        <city>Anytown</city> <state>CA</state> <zipcode>95432</zipcode>
+    </recipient>
+    <items>
+        <item>
+            <prodcode>Foo</prodcode>
+            <qty>1</qty> <price>12</price> <total>12</total>
+        </item>
+        <item>
+            <prodcode>Bar</prodcode>
+            <qty>2</qty> <price>15</price> <total>30</total>
+        </item>
+    </items>
+    <subtotal>42</subtotal>
+    <shipping>5</shipping>
+    <total>47</total>
+</order>
+
+#
+#
+
+#simplest code for sending an e-mail message
+import smtplib
+server = smtplib.SMTP('localhost')
+server.sendmail(fromaddr, toaddrs, msg)
+server.quit()
+
+#
+#

@@ -1,0 +1,94 @@
+#Chapter 13
+#Getting Classy
+#=====
+#SHORT EXAMPLES
+#=====
+
+#class example
+class Lab:
+    weight = 60                 # data attribute
+    def retrieve(self, thing):  # method attribute
+        return(thing)
+
+#
+#
+
+#NameTag class
+class NameTag:
+    def __init__(self, myname):
+        self.myname = myname
+    
+    def say(self):
+        print "Hello, my name is", self.myname
+
+#
+#
+
+#object composition example
+class Registration:
+    def __init__(self, name):
+        self.name = name
+        self.nametag = NameTag(name)
+
+#
+#
+
+#example of subclass overriding superclass method
+class GeekNameTag(NameTag):
+    def say(self):
+        print "The current value of my name is", self.myname
+
+#
+#
+
+#example of subclass extending superclass method
+class WeirdGreeting(NameTag):
+    def say(self):
+        NameTag.say(self)
+        print self.myname.swapcase()
+
+#
+#
+
+#example of writing a new subclass method
+#Note: This code is incomplete; it works only if a database file 
+#has been created and opened.
+class PersistentNameTag(NameTag):
+    def save(self):
+        db.write(pickle.dumps(self))
+
+#
+#
+
+#inheriting from multiple superclasses
+class A:
+    def foo(self):
+        print "foo called in A"
+        
+class B:
+    def foo(self):
+        print "foo called in B"
+
+    def bar(self):
+        print "bar called in B"
+        
+class C(A,B):
+    pass
+
+#
+#
+
+#overriding built-in __str__() method
+class Employee:
+    def __init__(self, lastname, firstname=None):
+        self.lastname = lastname
+        self.firstname = firstname
+
+    def __str__(self):
+        if self.firstname:
+            return "%s %s" % (self.firstname, self.lastname)
+        else:
+            return self.lastname
+
+#
+#

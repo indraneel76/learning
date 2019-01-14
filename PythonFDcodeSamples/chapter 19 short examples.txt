@@ -1,0 +1,32 @@
+#Chapter 19
+#Digging into Disk Data
+#=====
+#SHORT EXAMPLES
+#=====
+
+#creating an address table in sqlite
+#must import sqlite first
+query = """             -- sqlite queries are strings; comments use "--"
+     create table address   -- create a table named "address"
+     (                      -- begin creating a record
+         name varchar,      -- create a field called "name", with type "varchar"
+         street varchar,
+         city varchar
+     )                      -- end of this record
+     """                    # end of query
+
+#
+#
+
+#populating the sqlite table with data
+#Each element in a tuple should correspond to a field 
+#in one of the database’s records.
+addresses = [
+     ('Pet Shops Ltd', '123 Main St', 'Notlob'),
+     ('Similar Pet Shops Ltd', '321 First St', 'Bolton'),
+     ]
+for addr in addresses:
+     cursor.execute("insert into address values (?, ?, ?)", addr)
+
+#
+#

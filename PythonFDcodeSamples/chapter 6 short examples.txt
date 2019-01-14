@@ -1,0 +1,28 @@
+#Chapter 6
+#So This String Walks into a Bar
+#=====
+#SHORT EXAMPLES
+#=====
+
+#table of powers using formatting codes
+print "%2s %5s %12s" % ('x', 'x**2', 'x**x')
+print "=" * 21
+for x in range(1,6):
+    print "%2d %5d %12d" % (x, x**2, x**x)
+
+#
+#
+
+#table of powers using string methods
+x = 'x'
+y = 'x**2'
+z = 'x**x'
+print x, y.rjust(4), z.rjust(6)
+print "=" * 14
+for n in range(1,6):
+    nn = str(n**2)
+    nnn = str(n**n)
+    print n, nn.rjust(4), nnn.rjust(6)
+
+#
+#

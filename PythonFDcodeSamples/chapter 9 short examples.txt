@@ -1,0 +1,54 @@
+#Chapter 9
+#Diving into Dictionaries
+#=====
+#SHORT EXAMPLES
+#=====
+
+#rock, paper, scissors game using dictionary
+choice = raw_input("Choose scissors, rock, or paper: ")
+results = {"scissors": "cut paper", "rock": "crushes scissors", "paper":   
+    "covers rock"}
+print choice, results[choice]
+
+#
+#
+
+#dict cache for list with many unique items
+result = []
+cache = {}
+for key in mylist:
+    if key in cache:
+        result.append(cache[key])
+    else:
+        value = getValue(key)
+        cache[key] = value
+        result.append(value)
+        
+#
+#
+
+#dict cache for list with many similar items
+result = []
+cache = {}
+for key in mylist:
+    if key in cache:
+        result.append(cache[key])
+    else:
+        # Add to cache and append to result
+        result.append(cache.setdefault(key, getValue(key)))
+
+#
+#
+
+#dict cache for use when the keys will almost always be in the dict
+result = []
+cache = {}
+for key in mylist:
+    try:
+        result.append(cache[key])
+    except KeyError:
+      # Add to cache and append to result
+      result.append(cache.setdefault(key, getValue(key)))
+
+#
+#

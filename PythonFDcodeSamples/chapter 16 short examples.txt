@@ -1,0 +1,34 @@
+#Chapter 16
+#Tackling Some Advanced Features
+#=====
+#SHORT EXAMPLES
+#=====
+
+#generator function that filters out repeated items in a sequence.
+#First prepare the file by reading it using the readlines() method 
+#and then sorting the resulting list of strings
+def uniq(input):
+    prev = object()
+    for line in input:
+        if line != prev:
+            yield line
+        prev = line
+
+#
+#
+
+#context manager and example of its use
+@contextmanager
+def opened(filename, mode="r"):
+    f = open(filename, mode)
+    try:
+        yield f
+    finally:
+        f.close()
+
+with opened("/etc/passwd") as f:
+    for line in f:
+        print line.rstrip()
+
+#
+#

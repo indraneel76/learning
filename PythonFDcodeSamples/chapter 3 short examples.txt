@@ -1,0 +1,36 @@
+#Chapter 3
+#Basic Elements and Syntax
+#=====
+#SHORT EXAMPLES
+#=====
+
+#while loop example
+countdown = 10
+while countdown:
+    print countdown,
+    countdown -= 1
+print "blastoff!"
+
+#
+#
+
+#try statement with input
+user_input = raw_input("Enter an integer: ")
+try:
+    number = int(user_input)
+    print "You entered", number
+except ValueError:
+    print "Integers, please!"
+
+#class example
+class SayMyName:
+    def __init__(self, myname):
+        self.myname = myname
+    def say(self):
+        print "Hello, my name is", self.myname
+
+name1 = SayMyName("Aahz")
+name1.say()
+
+#
+#

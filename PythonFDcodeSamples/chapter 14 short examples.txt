@@ -1,0 +1,76 @@
+#Chapter 14
+#Introducing New-Style Classes
+#=====
+#SHORT EXAMPLES
+#=====
+
+#new-style class extending dict type (by Guido Van Rossum)
+class defaultdict(dict):
+    def __init__(self, default=None):
+        dict.__init__(self)
+        self.default = default
+
+    def __getitem__(self, key):
+        try:
+            return dict.__getitem__(self, key)
+        except KeyError:
+            return self.default
+
+#
+#
+
+#example of subclass extending superclass using the super() function.
+#this example works with the NameTag class example from Chapter 13.
+class WeirdGreeting(NameTag):
+    def say(self):
+        super(WeirdGreeting, self).say()
+        print self.myname.swapcase()
+
+#
+#
+
+#property example
+class MyClass(object):
+    def __init__(self):
+        self._x = 0
+
+    def getx(self):
+        print "Getting _x"
+        return self._x
+
+    def setx(self, x):
+        if x < 0:
+            raise ValueError("Negative values prohibited: %r" % x)
+        self._x = x
+        print "Setting _x"
+
+    x = property(getx, setx, doc="no negative x")
+    
+#
+#
+
+#class method example using the classmethod() code
+class E(object):
+    def g(cls, x):
+        return cls.__name__, x
+    g = classmethod(g)
+
+#
+#
+
+#class method example using decorator syntax
+    @classmethod
+    def g(cls, x):
+        return cls.__name__, x
+
+#
+#
+
+#example with __new__() class method
+class derived_from(str):
+    def __new__(cls, *args, **kwargs):
+        instance = str.__new__(derived_from, *args, **kwargs)
+        return instance
+
+#
+#

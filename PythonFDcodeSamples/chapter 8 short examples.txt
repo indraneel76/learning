@@ -1,0 +1,15 @@
+#Chapter 8
+#Processing Lists and Tuples
+#=====
+#SHORT EXAMPLES
+#=====
+
+#building a list from another list
+L1 = ['spam', 'spam', 'spam', 'baked beans', None, 'spam', 'spam']
+L2 = []
+for i in L1:
+    if i is not None:
+        L2.append(i)
+
+#
+#

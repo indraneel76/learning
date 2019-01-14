@@ -1,0 +1,80 @@
+#Chapter 21
+#Ten Critical Python Idioms
+#=====
+#SHORT EXAMPLES
+#=====
+
+#find files with glob
+import glob
+docs = glob.glob('MyDocs/*.doc')
+
+#
+#
+
+#dice roll function (6-sided by default)
+import random
+def roll(d=6):
+     return random.randint(1, d)
+
+#
+#
+
+#function for creating a deck of cards
+def make_deck():
+    suits = ['spades', 'hearts', 'diamonds', 'clubs']
+    values = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack',
+        'queen', 'king']
+    deck = []
+    for s in suits:
+        for v in values:
+            deck.append(v + ' of ' + s)
+    return deck
+
+#
+#
+
+#finding unique items in a list and returning them in the same order
+def unique(items):
+     tmp = []
+     cache = set()
+     for item in items:
+         if item not in cache:
+             tmp.append(item)
+             cache.add(item)
+     return tmp
+
+#
+#
+
+#generator version of above function
+def unique(items):
+     cache = set()
+     for item in items:
+         if item not in cache:
+             cache.add(item)
+             yield item
+
+#
+#
+
+#type-testing for user-defined classes
+def foo(l):
+     try:
+         l.append('foo')
+         l[0]
+         l.pop()
+     except StandardError:
+         raise TypeError("Not a valid list object: %r" % l)
+
+#
+#
+
+#sorting sequence objects by one of their elements
+#takes a list of address tuples and sorts by zip code
+def dsu_zip(addresses):
+    tmp = [(x[2], x) for x in addresses]
+    tmp.sort()
+    return [x[1] for x in tmp]
+
+#
+#
