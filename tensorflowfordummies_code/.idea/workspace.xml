@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46177a49-5b4d-47ba-ad8b-5bbbba019ed6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ch8/loadImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootstrap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bootstrap/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/data_science/03/demos/demo/module2/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/03/demos/demo/module2/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/data_science/04/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/04/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/data_science/05/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/05/demos/demo/titanic" afterDir="false" />
@@ -10,9 +10,6 @@
       <change beforePath="$PROJECT_DIR$/../python/data_science/07/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/07/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/data_science/08/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/08/demos/demo/titanic" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/data_science/09/demos/demo/titanic" beforeDir="false" afterPath="$PROJECT_DIR$/../python/data_science/09/demos/demo/titanic" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch8/cnn_cifar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch8/cnn_cifar.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,10 +52,10 @@
     <session id="-1360665173">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -122,6 +119,42 @@
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>PerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -164,9 +197,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -175,6 +208,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -327,7 +361,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2700454" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27382752" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
