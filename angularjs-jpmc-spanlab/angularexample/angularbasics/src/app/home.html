@@ -1,0 +1,70 @@
+<h1>Hello {{name}}</h1>
+<form #form1 = 'ngForm'>
+
+<div class="form-group" [class.has-error]="firstname.invalid && firstname.touched" >
+    <label class="control-label">First name</label>
+    <input #firstname="ngModel" type="text" class="form-control" placeholder="First name" name="firstname1" [(ngModel)]="employee.firstname" (ngModelChange)="firstnameuppercase($event)" required/>
+
+</div>
+<div *ngIf="firstname.invalid && firstname.touched" class="alert alert-danger">
+    First name is required
+</div>
+
+<div class="form-group" [class.has-error]="lastname.invalid && lastname.touched">
+    <label class="control-label">Last name</label>
+    <input #lastname="ngModel" type="text" class="form-control" placeholder="Last name"  pattern="[a-zA-Z]+" name="lastname1" [(ngModel)] = "employee.lastname" required/>
+
+</div>
+
+<div *ngIf="lastname.invalid && lastname.touched" class="alert alert-danger">
+    Last name is required
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" name="is-fullTime-emp" [(ngModel)]="employee.isFullTime">Full Time Emmmployee
+    </label>
+</div>
+
+<div class="radio">
+
+    <label>
+        <input type="radio" name="payType" [(ngModel)]="employee.paymentType" value="Monthly" checked>Monthly
+    </label>
+</div>
+
+<div class="radio">
+
+    <label>
+        <input type="radio" name="payType" [(ngModel)]="employee.paymentType" value="Weekly" >Weekly
+    </label>
+</div>
+<div class ="form-group">
+    <label>Primary language</label>
+    <select class="form-control">
+        <option>English</option>
+        <option>Hindi</option>
+        <option>Other</option>
+    </select>
+</div>
+
+<div class ="form-group" [class.has-error]="hasPrimaryLangaugeError">
+    <label class="control-label"> Primary language</label>
+    <select #primaryLanguage class="form-control" name="primaryLanguage" [(ngModel)]="employee.primaryLanguage" (change)="validatePrimaryLanguage(primaryLanguage.value)">
+        <option value="default">Select a language</option>
+        <option *ngFor="let lang of languages">
+            {{lang}}
+        </option>
+        
+    </select>
+</div>
+
+
+<button class="btn btn-primary" [disabled]="form1.invalid || hasPrimaryLangaugeError" type="submit">OK</button>
+
+</form>
+
+<br/>
+Model: {{employee |json}}
+{{form1.pristine}}
+<br/>
+Angular : {{form1.value |json}}
