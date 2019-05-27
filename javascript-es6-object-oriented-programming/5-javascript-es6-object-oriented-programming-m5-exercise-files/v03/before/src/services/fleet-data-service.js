@@ -15,7 +15,7 @@ export class FleetDataService {
             return car.license === license;
         });
     }
-    
+     
     getCarsSortedByLicense() {
         return this.cars.sort(function(car1, car2) {
             if (car1.license < car2.license)
